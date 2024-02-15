@@ -20,6 +20,6 @@
 - php artisan serve
 
 
-The App should now be running at port 80
+The App should now be running at port 8000
 
 
