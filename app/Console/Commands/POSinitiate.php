@@ -46,32 +46,32 @@ class POSinitiate extends Command
 
        for ($k = 1 ; $k < 99; $k++){
 
-           $categories = new Customer;
-           $categories->name = $faker->name();
-           $categories->phone = $faker->phoneNumber();
-           $categories->save();
+           $customer = new Customer;
+           $customer->name = $faker->name();
+           $customer->phone = $faker->phoneNumber();
+           $customer->save();
        }
 
        $this->info('The app Customers auto populated successful!!');
 
        for ($k = 1 ; $k < 99; $k++){
 
-           $categories = new Product;
-           $categories->name = $faker->sentence();
-           $categories->category_id = $k;
-           $categories->selling_price = rand(100, 10000);
-           $categories->unit = rand(100, 500);
-           $categories->description = $faker->paragraph();
-           $categories->save();
+           $product = new Product;
+           $product->name = $faker->sentence();
+           $product->category_id = $k;
+           $product->selling_price = rand(100, 10000);
+           $product->unit = rand(100, 500);
+           $product->description = $faker->paragraph();
+           $product->save();
        }
 
 
        $this->info('The app Products auto populated successful!!');
 
        for ($k = 1 ; $k < 99; $k++){
-           $categories = new Sale();
-           $categories->customer_id = $k;
-           $categories->save();
+           $sale = new Sale();
+           $sale->customer_id = $k;
+           $sale->save();
        }
 
        $this->info('The app Sales auto populated successful!!');
@@ -79,11 +79,11 @@ class POSinitiate extends Command
 
 
         for ($k = 1 ; $k < 99; $k++){
-            $categories = new SaleItem();
-            $categories->sale_id = $k;
-            $categories->product_id = $k;
-            $categories->units_purchased =rand(1, 10);
-            $categories->save();
+            $saleItem = new SaleItem();
+            $saleItem->sale_id = $k;
+            $saleItem->product_id = $k;
+            $saleItem->units_purchased =rand(1, 10);
+            $saleItem->save();
         }
 
         $this->info('The app SaleItems auto-populated auto populated successful!!');
