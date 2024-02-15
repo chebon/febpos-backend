@@ -22,7 +22,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $category = new Category;
+            $category->name =  $request->name;
+            $category->save();
+            $response = ['success' => true,  'status' => 200, 'data' => [$category]];
     }
 
     /**
@@ -30,7 +33,8 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+            $category = Category::find($id);
+            $response = ['success' => true,  'status' => 200, 'data' => [$category]];
     }
 
     /**
@@ -38,7 +42,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+            $category = Category::find($id);
+            $category->name =  $request->name;
+            $category->save();
+            $response = ['success' => true,  'status' => 200, 'data' => [$category]];
     }
 
     /**
@@ -46,6 +53,8 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Category::destroy($id);
+        $response = ['success' => true,  'status' => 200];
+        
     }
 }

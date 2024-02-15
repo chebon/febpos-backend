@@ -23,7 +23,13 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+           $customer = new Customer;
+           $customer->name = $request->name;
+           $customer->phone = $request->phone;
+           $customer->save();
+           $data = Customer::where('id', $customer->id)->with('sale')->with('salesItems')->get();
+           $response = ['success' => true,  'status' => 200, 'data' => [$data]];
+           return response()->json($response);
     }
 
     /**
@@ -41,7 +47,13 @@ class CustomerController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+           $customer =  Customer::find($id);
+           $customer->name = $request->name;
+           $customer->phone = $request->phone;
+           $customer->save();
+           $data = Customer::where('id', $customer->id)->with('sale')->with('salesItems')->get();
+           $response = ['success' => true,  'status' => 200, 'data' => [$data]];
+           return response()->json($response);
     }
 
     /**
@@ -49,6 +61,8 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+           $customer =  Customer::destroy($id);
+           $response = ['success' => true,  'status' => 200];
+           return response()->json($response);
     }
 }

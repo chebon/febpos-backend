@@ -32,7 +32,6 @@ class ProductController extends Controller
            $product->unit = $request->unit;
            $product->description = $request->description;
            $product->save();
-
            $data = Product::where('id', $product->id)->with('category')->with('sale')->get();
            $response = ['success' => true,  'status' => 200, 'data' => [$data]];
            return response()->json($response);
@@ -60,7 +59,6 @@ class ProductController extends Controller
            $product->unit = $request->unit;
            $product->description = $request->description;
            $product->save();
-
            $data = Product::where('id', $product->id)->with('category')->with('sale')->get();
            $response = ['success' => true,  'status' => 200, 'data' => [$data]];
            return response()->json($response);
