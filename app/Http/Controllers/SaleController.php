@@ -22,7 +22,21 @@ class SaleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+           $sale = new Sale();
+           $sale->customer_id = $request->customer_id;
+           $sale->save();
+
+           foreach($request->sale_item as $key => $value){
+            $categories = new SaleItem();
+            $categories->sale_id = $sale->id;
+            $categories->product_id = $value['product_id'];
+            $categories->units_purchased = $value['units_purchased'];
+            $categories->save();
+           }
+
+            $data = Sale::where('id', )->with('category')->with('sale')->get();
+            $response = ['success' => true,  'status' => 200, 'data' => [$data]];
+            return response()->json($response);
     }
 
     /**
@@ -30,7 +44,9 @@ class SaleController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Sale::where('id', )->with('category')->with('sale')->get();
+        $response = ['success' => true,  'status' => 200, 'data' => [$data]];
+        return response()->json($response);
     }
 
     /**
@@ -46,6 +62,8 @@ class SaleController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Sale::destroy($id);
+        $response = ['success' => true,  'status' => 200];
+        return response()->json($response);
     }
 }

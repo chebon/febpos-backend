@@ -32,51 +32,51 @@ class POSinitiate extends Command
     public function handle()
     {
 
-//        $this->info('The app initiation has started!');
-//
-//        $faker = Factory::create();
-//         for ($k = 0 ; $k < 100; $k++){
-//             $categories = new Category;
-//             $categories->name =  $faker->shuffleString();
-//             $categories->save();
-//         }
-//
-//        $this->info('The app Categories auto populated successful!');
-//
-//
-//        for ($k = 1 ; $k < 99; $k++){
-//
-//            $categories = new Customer;
-//            $categories->name = $faker->name();
-//            $categories->phone = $faker->phoneNumber();
-//            $categories->save();
-//        }
-//
-//        $this->info('The app Customers auto populated successful!!');
-//
-//        for ($k = 1 ; $k < 99; $k++){
-//
-//            $categories = new Product;
-//            $categories->name = $faker->sentence();
-//            $categories->category_id = $k;
-//            $categories->selling_price = rand(100, 10000);
-//            $categories->unit = rand(100, 500);
-//            $categories->description = $faker->paragraph();
-//            $categories->save();
-//        }
-//
-//
-//        $this->info('The app Products auto populated successful!!');
-//
-//        for ($k = 1 ; $k < 99; $k++){
-//            $categories = new Sale();
-//            $categories->customer_id = $k;
-//            $categories->save();
-//        }
-//
-//        $this->info('The app Sales auto populated successful!!');
-//
-//
+       $this->info('The app initiation has started!');
+
+       $faker = Factory::create();
+        for ($k = 0 ; $k < 100; $k++){
+            $categories = new Category;
+            $categories->name =  $faker->shuffleString();
+            $categories->save();
+        }
+
+       $this->info('The app Categories auto populated successful!');
+
+
+       for ($k = 1 ; $k < 99; $k++){
+
+           $categories = new Customer;
+           $categories->name = $faker->name();
+           $categories->phone = $faker->phoneNumber();
+           $categories->save();
+       }
+
+       $this->info('The app Customers auto populated successful!!');
+
+       for ($k = 1 ; $k < 99; $k++){
+
+           $categories = new Product;
+           $categories->name = $faker->sentence();
+           $categories->category_id = $k;
+           $categories->selling_price = rand(100, 10000);
+           $categories->unit = rand(100, 500);
+           $categories->description = $faker->paragraph();
+           $categories->save();
+       }
+
+
+       $this->info('The app Products auto populated successful!!');
+
+       for ($k = 1 ; $k < 99; $k++){
+           $categories = new Sale();
+           $categories->customer_id = $k;
+           $categories->save();
+       }
+
+       $this->info('The app Sales auto populated successful!!');
+
+
 
         for ($k = 1 ; $k < 99; $k++){
             $categories = new SaleItem();

@@ -25,7 +25,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+           $product = new Product;
+           $product->name = $request->name;
+           $product->category_id = $request->category_id;
+           $product->selling_price = $request->selling_price;
+           $product->unit = $request->unit;
+           $product->description = $request->description;
+           $product->save();
+
+           $data = Product::where('id', $product->id)->with('category')->with('sale')->get();
+           $response = ['success' => true,  'status' => 200, 'data' => [$data]];
+           return response()->json($response);
     }
 
     /**
@@ -33,7 +43,9 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = Product::where('id', $product->id)->with('category')->with('sale')->get();
+        $response = ['success' => true,  'status' => 200, 'data' => [$data]];
+        return response()->json($response);
     }
 
     /**
@@ -41,7 +53,17 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+           $product = Product::find($id);
+           $product->name = $request->name;
+           $product->category_id = $request->category_id;
+           $product->selling_price = $request->selling_price;
+           $product->unit = $request->unit;
+           $product->description = $request->description;
+           $product->save();
+
+           $data = Product::where('id', $product->id)->with('category')->with('sale')->get();
+           $response = ['success' => true,  'status' => 200, 'data' => [$data]];
+           return response()->json($response);
     }
 
     /**
@@ -49,6 +71,8 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Product::destroy($id);
+        $response = ['success' => true,  'status' => 200];
+        return response()->json($response);
     }
 }
